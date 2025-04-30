@@ -1,43 +1,42 @@
 package com.scraper.sslv_scraper.model;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-
-@Entity
 @Data
-@Table(name = "advertisements")
-public class Advertisement {
-
+@Entity
+@Table(name = "apartments")
+public class Apartment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
-
-    @Column(length = 1000)
-
-    private String description;
-    private double price;
-    private double pricePerSquareMeter;
-    private LocalDateTime postedAt;
-    private String url;
+    private String address;
+    private String street;
+    private double area;
+    private String floor;
+    private String series;
+    private String rooms;
+    private String roomNo;
+    
 
     @ManyToOne
+    @JoinColumn(name = "district_id")
     @JsonIgnore
-    @JoinColumn(name = "apartment_id")
-    private Apartment apartment;
+    private District district;
 
+    @OneToMany(mappedBy = "apartment")
+    @JsonIgnore
+    private List<Advertisement> advertisements;
 }
