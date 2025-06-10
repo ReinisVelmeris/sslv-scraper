@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.scraper.sslv_scraper.model.City;
 
-public interface CityRepository extends JpaRepository<City, Long> {
+public interface CityRepository extends BaseRepository<City, Long> {
     City findByName(String name);
     City findByUrlPath(String urlPath);
     Optional<City> findBySlug(String slug);

@@ -34,6 +34,9 @@ public class Advertisement {
     private double pricePerSquareMeter;
     private LocalDateTime postedAt;
     private String url;
+    private String type;
+    @Column(nullable = true)
+    private Integer views;
 
     @ManyToOne
     @JsonIgnore

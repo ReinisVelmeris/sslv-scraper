@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-public interface DistrictRepository extends JpaRepository<District, Long> {
+public interface DistrictRepository extends BaseRepository<District, Long> {
     District findByUrlPath(String urlPath);
     District findByName(String name);
     Optional<District> findBySlugAndCity(String slug, City city);
